@@ -62,7 +62,7 @@ public class TS_USERLOGIN {
     public void login_second_test() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
-        searchInput.sendKeys("testNeprejde");
+        searchInput.sendKeys("Sdsajndkandasdowkiadao");
         searchInput = driver.findElement(By.name("password"));
         searchInput.sendKeys("vse456ru");
         searchInput.sendKeys(Keys.ENTER);
