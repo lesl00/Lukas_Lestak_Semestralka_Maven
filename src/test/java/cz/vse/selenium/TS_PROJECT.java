@@ -24,7 +24,7 @@ public class TS_PROJECT {
 
     @Before
     public void init() throws IOException {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
         driver = new ChromeDriver();
         ChromeOptions cho = new ChromeOptions();
         cho.addArguments("--headless");

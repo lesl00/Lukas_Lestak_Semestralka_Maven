@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Lukas_Lestak_Semestralka_Maven" />
         <module name="selenium-example" />
+        <module name="Lukas_Lestak_Semestralka_Maven" />
       </profile>
     </annotationProcessing>
   </component>
