@@ -41,7 +41,7 @@ public class TS_PROJECT {
 //        driver.close();
     }
 
-    public void Login(){
+    public void Prihlasenie(){
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
@@ -53,7 +53,7 @@ public class TS_PROJECT {
 
     @Test
     public void bad_project_fourth_test() {
-        Login();
+        Prihlasenie();
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
 
@@ -69,7 +69,7 @@ public class TS_PROJECT {
 
     @Test
     public void new_project_fifth_test() {
-        Login();
+        Prihlasenie();
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
         //Name: xname
