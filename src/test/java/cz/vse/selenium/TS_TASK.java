@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Unit test for simple App.
  */
-public class TS_PROJECT {
+public class TS_TASK {
     private ChromeDriver driver;
     private String url="https://digitalnizena.cz/rukovoditel/index.php?module=users/login";
 
@@ -114,4 +114,4 @@ public class TS_PROJECT {
 
     }
 
-}}
+}
