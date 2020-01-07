@@ -47,7 +47,7 @@ public class TS_USERLOGIN {
     }
 
     @Test
-    public void login_first_test() {
+    public void prihlasenie_pozitivne() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
@@ -59,7 +59,7 @@ public class TS_USERLOGIN {
     }
 
     @Test
-    public void login_second_test() {
+    public void prihlasenie_negativne() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("Sdsajndkandasdowkiadao");
@@ -71,7 +71,7 @@ public class TS_USERLOGIN {
     }
 
     @Test
-    public void logout_third_test() {
+    public void odhlasenie() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");

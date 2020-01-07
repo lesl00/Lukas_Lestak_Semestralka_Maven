@@ -72,7 +72,7 @@ public class TS_PROJECT {
         Prihlasenie();
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
-        //Name: xname
+        //Name: lesl00
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
         WebElement searchInput = driver.findElement(By.id("fields_158"));
@@ -82,13 +82,11 @@ public class TS_PROJECT {
         Select select = new Select(driver.findElement(By.id("fields_156")));
         select.selectByIndex(1);
         //Status: new
-        //Assert.assertTrue(driver.findElement(By.id("fields_157")).isDisplayed());
         driver.findElement(By.id("fields_159")).click();
         driver.findElement(By.cssSelector("td[class='active day']")).click();
         driver.findElement(By.className("btn-primary-modal-action")).click();
 
         driver.findElement(By.xpath("//a[contains(text(),'lesl00')]")).click();
-
         driver.findElement(By.cssSelector(".btn-default:nth-child(1)")).click();
         driver.findElement(By.cssSelector(".btn-default:nth-child(1)")).click();
         wait = new WebDriverWait(driver, 3);

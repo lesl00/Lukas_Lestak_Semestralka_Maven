@@ -102,12 +102,6 @@ public class TS_TASK {
         driver.findElement(By.tagName("body")).sendKeys("Description test");
         driver.switchTo().defaultContent();
         driver.findElement(By.className("btn-primary-modal-action")).click();
-
-
-
-
-
-
     }
 
 }
