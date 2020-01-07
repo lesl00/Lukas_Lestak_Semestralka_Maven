@@ -51,14 +51,14 @@ public class TS_TASK {
     }
 
 
-    public void NewProject(){
+    public void projekt_novy(){
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
         //Name: xname
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
         WebElement searchInput = driver.findElement(By.id("fields_158"));
-        searchInput.sendKeys("vism00");
+        searchInput.sendKeys("lesl00");
         //status
         driver.findElement(By.id("fields_157"));
         Select select = new Select(driver.findElement(By.id("fields_157")));
@@ -75,32 +75,28 @@ public class TS_TASK {
     }
 
     @Test
-    public void new_task_sixth_test() {
+    public void uloha_nova() {
         Prihlasenie();
-        NewProject();
+        projekt_novy();
 
         driver.findElement(By.cssSelector(".btn-primary")).click();
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_168")));
         //name
         WebElement searchInput = driver.findElement(By.id("fields_168"));
-        searchInput.sendKeys("vism00_task");
-
+        searchInput.sendKeys("lesl00_uloha");
         //type
         driver.findElement(By.id("fields_167"));
         Select select = new Select(driver.findElement(By.id("fields_167")));
         select.selectByIndex(1);
-
         //status
         driver.findElement(By.id("fields_169"));
         select = new Select(driver.findElement(By.id("fields_169")));
         select.selectByIndex(0);
-
         //priority
         driver.findElement(By.id("fields_170"));
         select = new Select(driver.findElement(By.id("fields_170")));
         select.selectByIndex(2);
-
         //description
         driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
         driver.findElement(By.tagName("body")).sendKeys("Description test");

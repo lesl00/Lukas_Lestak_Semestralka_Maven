@@ -52,7 +52,7 @@ public class TS_PROJECT {
 
 
     @Test
-    public void bad_project_fourth_test() {
+    public void projekt_chybny() {
         Prihlasenie();
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
@@ -68,7 +68,7 @@ public class TS_PROJECT {
     }
 
     @Test
-    public void new_project_fifth_test() {
+    public void projekt_novy() {
         Prihlasenie();
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
@@ -76,7 +76,7 @@ public class TS_PROJECT {
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
         WebElement searchInput = driver.findElement(By.id("fields_158"));
-        searchInput.sendKeys("vism00");
+        searchInput.sendKeys("lesl00");
         //priority: high
         driver.findElement(By.id("fields_156"));
         Select select = new Select(driver.findElement(By.id("fields_156")));
@@ -87,31 +87,21 @@ public class TS_PROJECT {
         driver.findElement(By.cssSelector("td[class='active day']")).click();
         driver.findElement(By.className("btn-primary-modal-action")).click();
 
-        driver.findElement(By.xpath("//a[contains(text(),'vism00')]")).click();
+        driver.findElement(By.xpath("//a[contains(text(),'lesl00')]")).click();
 
         driver.findElement(By.cssSelector(".btn-default:nth-child(1)")).click();
         driver.findElement(By.cssSelector(".btn-default:nth-child(1)")).click();
         wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-group li:nth-child(2) > a")));
+
         driver.findElement(By.cssSelector(".btn-group li:nth-child(2) > a")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("uniform-delete_confirm")));
+
         driver.findElement(By.id("delete_confirm")).click();
         wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn:nth-child(3)")));
         driver.findElement(By.cssSelector(".btn:nth-child(3)")).click();
 
-
-
-/*
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        searchInput.sendKeys("vism00");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-primary-modal-action")));
-        driver.findElement(By.cssSelector(".btn-primary-modal-action")).click();
-        wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert")));
-        Assert.assertTrue(driver.findElement(By.cssSelector(".alert")).isDisplayed());
-        driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
-        driver.quit();*/
     }
 
 }
