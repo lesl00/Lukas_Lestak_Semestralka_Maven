@@ -151,7 +151,70 @@ public class TS_TASK {
         wait = new WebDriverWait(driver, 2);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btn-primary-modal-action")));
         driver.findElement(By.className("btn-primary-modal-action")).click();
+    }
 
+    @Test
+    public void sevenTasksCreated() {
+        Prihlasenie();
+        projekt_novy();
+
+
+
+        for(int i = 0;i<7;i++)
+        {
+            driver.findElement(By.className("btn-primary")).click();
+            WebDriverWait wait = new WebDriverWait(driver, 2);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_168")));
+            WebElement searchInput = driver.findElement(By.id("fields_168"));
+            searchInput.sendKeys("Ale no takkk");
+
+            Select select = new Select(driver.findElement(By.id("fields_169")));
+            select.selectByIndex(i);
+
+            driver.switchTo().frame(driver.findElement(By.tagName("iframe")));
+            driver.findElement(By.tagName("body")).sendKeys("precooo");
+            driver.switchTo().defaultContent();
+            driver.findElement(By.className("btn-primary-modal-action")).click();
+        }
+
+
+
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr")));
+        List<WebElement> Elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
+        Assert.assertTrue(Elements.size() == 4);
+
+
+        driver.findElement(By.className("filters-preview-condition-include")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='chosen-choices'] a")));
+        List<WebElement> Filters = driver.findElements(By.cssSelector("[class='chosen-choices'] a"));
+        Filters.get(1).click();
+        driver.findElement(By.className("btn-primary-modal-action")).click();
+
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr")));
+        Elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
+        Assert.assertTrue(Elements.size() == 3);
+
+        driver.findElement(By.className("filters-preview-condition-include")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='chosen-choices'] a")));
+        Filters = driver.findElements(By.cssSelector("[class='chosen-choices'] a"));
+        Filters.get(1).click();
+        Filters.get(0).click();
+        driver.findElement(By.className("btn-primary-modal-action")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr")));
+        Elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
+        Assert.assertTrue(Elements.size() == 8);
+
+
+        driver.findElement(By.id("select_all_items")).click();
+        driver.findElement(By.cssSelector("[class='btn btn-default dropdown-toggle']")).click();
+        driver.findElement(By.cssSelector("[class='btn btn-default dropdown-toggle']")).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Delete")));
+        driver.findElement(By.linkText("Delete")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btn-primary-modal-action")));
+        driver.findElement(By.className("btn-primary-modal-action")).click();
 
 
 
