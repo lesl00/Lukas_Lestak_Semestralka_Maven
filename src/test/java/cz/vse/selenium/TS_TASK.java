@@ -14,16 +14,15 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Date;
+
 
 /**
  * Unit test for simple App.
  */
 public class TS_TASK {
     private ChromeDriver driver;
-    private String url="https://digitalnizena.cz/rukovoditel/index.php?module=users/login";
+    private String url = "https://digitalnizena.cz/rukovoditel/index.php?module=users/login";
 
     @Before
     public void init() throws IOException {
@@ -44,7 +43,7 @@ public class TS_TASK {
 //        driver.close();
     }
 
-    public void Prihlasenie(){
+    public void Prihlasenie() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
@@ -54,10 +53,10 @@ public class TS_TASK {
     }
 
 
-    public void projekt_novy(){
+    public void projekt_novy() {
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
-        //Name: xname
+        //Name:
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_158")));
         WebElement searchInput = driver.findElement(By.id("fields_158"));
@@ -79,7 +78,6 @@ public class TS_TASK {
 
     @Test
     public void uloha_nova_kontrola() {
-        //preconditions
         Prihlasenie();
         projekt_novy();
 
@@ -114,13 +112,13 @@ public class TS_TASK {
 
         wait = new WebDriverWait(driver, 1);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr")));
-        List<WebElement> elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
-        List<WebElement> cells = elements.get(1).findElements(By.tagName("td"));
-        List<WebElement> obsah = cells.get(1).findElements(By.tagName("a"));
-        obsah.get(2).click();
+        List<WebElement> Elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
+        List<WebElement> Tabcell = Elements.get(1).findElements(By.tagName("td"));
+        List<WebElement> Tabcont = Tabcell.get(1).findElements(By.tagName("a"));
+        Tabcont.get(2).click();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-bordered table-hover table-item-details'] tr")));
-        elements = driver.findElements(By.cssSelector("[class='table table-bordered table-hover table-item-details'] tr"));
+        Elements = driver.findElements(By.cssSelector("[class='table table-bordered table-hover table-item-details'] tr"));
 
         WebElement nazov = driver.findElement(By.className("caption"));
         Assert.assertEquals("lesl00Uloha", nazov.getText());
@@ -128,29 +126,28 @@ public class TS_TASK {
         Assert.assertEquals("BLa BLa BLa Popis", desc.getText());
 
 
+        Tabcell = Elements.get(3).findElements(By.tagName("td"));
+        Tabcont = Tabcell.get(0).findElements(By.tagName("div"));
+        Assert.assertTrue(Tabcont.get(0).getText().equals("Task"));
 
-        cells = elements.get(3).findElements(By.tagName("td"));
-        obsah = cells.get(0).findElements(By.tagName("div"));
-        Assert.assertTrue(obsah.get(0).getText().equals("Task"));
 
+        Tabcell = Elements.get(4).findElements(By.tagName("td"));
+        Tabcont = Tabcell.get(0).findElements(By.tagName("div"));
+        Assert.assertTrue(Tabcont.get(0).getText().equals("New"));
 
-        cells = elements.get(4).findElements(By.tagName("td"));
-        obsah = cells.get(0).findElements(By.tagName("div"));
-        Assert.assertTrue(obsah.get(0).getText().equals("New"));
-
-        cells = elements.get(5).findElements(By.tagName("td"));
-        obsah = cells.get(0).findElements(By.tagName("div"));
-        Assert.assertTrue(obsah.get(0).getText().equals("Medium"));
+        Tabcell = Elements.get(5).findElements(By.tagName("td"));
+        Tabcont = Tabcell.get(0).findElements(By.tagName("div"));
+        Assert.assertTrue(Tabcont.get(0).getText().equals("Medium"));
 
 
         //task rip
         driver.executeScript("window.history.go(-1)");
         wait = new WebDriverWait(driver, 1);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr")));
-        elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
-        cells = elements.get(1).findElements(By.tagName("td"));
-        obsah = cells.get(1).findElements(By.tagName("a"));
-        obsah.get(0).click();
+        Elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
+        Tabcell = Elements.get(1).findElements(By.tagName("td"));
+        Tabcont = Tabcell.get(1).findElements(By.tagName("a"));
+        Tabcont.get(0).click();
         wait = new WebDriverWait(driver, 2);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btn-primary-modal-action")));
         driver.findElement(By.className("btn-primary-modal-action")).click();
@@ -158,8 +155,5 @@ public class TS_TASK {
 
 
 
-
-
     }
-
 }
