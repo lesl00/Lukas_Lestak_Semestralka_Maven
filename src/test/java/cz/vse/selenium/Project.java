@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Unit test for simple App.
  */
-public class TS_PROJECT {
+public class Project {
     private ChromeDriver driver;
     private String url="https://digitalnizena.cz/rukovoditel/index.php?module=users/login";
 
@@ -38,10 +38,9 @@ public class TS_PROJECT {
 
     @After
     public void tearDown() {
-//        driver.close();
     }
 
-    public void Prihlasenie(){
+    public void Login(){
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
@@ -52,8 +51,8 @@ public class TS_PROJECT {
 
 
     @Test
-    public void projekt_chybny() {
-        Prihlasenie();
+    public void wrong_project() {
+        Login();
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
 
@@ -68,8 +67,8 @@ public class TS_PROJECT {
     }
 
     @Test
-    public void projekt_novy() {
-        Prihlasenie();
+    public void new_project() {
+        Login();
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
         //Name: lesl00

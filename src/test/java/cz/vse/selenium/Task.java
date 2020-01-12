@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Unit test for simple App.
  */
-public class TS_TASK {
+public class Task {
     private ChromeDriver driver;
     private String url = "https://digitalnizena.cz/rukovoditel/index.php?module=users/login";
 
@@ -34,16 +34,14 @@ public class TS_TASK {
         cho.addArguments("window-size=1200,1100");
         cho.addArguments("--disable-gpu");
         cho.addArguments("--disable-extensions");
-        //driver = new ChromeDriver(cho);
         driver.manage().window().maximize();
     }
 
     @After
     public void tearDown() {
-//        driver.close();
     }
 
-    public void Prihlasenie() {
+    public void Login() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
@@ -53,7 +51,7 @@ public class TS_TASK {
     }
 
 
-    public void projekt_novy() {
+    public void new_project() {
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
         //Name:
@@ -77,9 +75,9 @@ public class TS_TASK {
     }
 
     @Test
-    public void uloha_nova_kontrola() {
-        Prihlasenie();
-        projekt_novy();
+    public void new_task() {
+        Login();
+        new_project();
 
         driver.findElement(By.cssSelector(".btn-primary")).click();
         WebDriverWait wait = new WebDriverWait(driver, 3);
@@ -120,8 +118,8 @@ public class TS_TASK {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-bordered table-hover table-item-details'] tr")));
         Elements = driver.findElements(By.cssSelector("[class='table table-bordered table-hover table-item-details'] tr"));
 
-        WebElement nazov = driver.findElement(By.className("caption"));
-        Assert.assertEquals("lesl00Uloha", nazov.getText());
+        WebElement caption = driver.findElement(By.className("caption"));
+        Assert.assertEquals("lesl00Uloha", caption.getText());
         WebElement desc = driver.findElement(By.className("fieldtype_textarea_wysiwyg"));
         Assert.assertEquals("BLa BLa BLa Popis", desc.getText());
 
@@ -155,8 +153,8 @@ public class TS_TASK {
 
     @Test
     public void sevenTasksCreated() {
-        Prihlasenie();
-        projekt_novy();
+        Login();
+        new_project();
 
 
 

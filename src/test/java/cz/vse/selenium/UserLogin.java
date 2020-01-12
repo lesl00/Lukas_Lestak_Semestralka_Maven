@@ -6,24 +6,18 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * Unit test for simple App.
  */
-public class TS_USERLOGIN {
+public class UserLogin {
     private ChromeDriver driver;
     private String url="https://digitalnizena.cz/rukovoditel/index.php?module=users/login";
 
@@ -37,17 +31,15 @@ public class TS_USERLOGIN {
         cho.addArguments("window-size=1200,1100");
         cho.addArguments("--disable-gpu");
         cho.addArguments("--disable-extensions");
-        //driver = new ChromeDriver(cho);
         driver.manage().window().maximize();
     }
 
     @After
     public void tearDown() {
-//        driver.close();
     }
 
     @Test
-    public void prihlasenie_pozitivne() {
+    public void positive_login() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
@@ -59,7 +51,7 @@ public class TS_USERLOGIN {
     }
 
     @Test
-    public void prihlasenie_negativne() {
+    public void negative_login() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("Sdsajndkandasdowkiadao");
@@ -71,7 +63,7 @@ public class TS_USERLOGIN {
     }
 
     @Test
-    public void odhlasenie() {
+    public void logout() {
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
