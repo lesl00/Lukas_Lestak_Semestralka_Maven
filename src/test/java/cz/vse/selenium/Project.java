@@ -52,7 +52,9 @@ public class Project {
 
     @Test
     public void wrong_project() {
+        //given
         Login();
+        //when
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
 
@@ -61,6 +63,7 @@ public class Project {
         driver.findElement(By.cssSelector(".btn-primary-modal-action")).click();
         wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert")));
+        //then
         Assert.assertTrue(driver.findElement(By.cssSelector(".alert")).isDisplayed());
         driver.findElement(By.cssSelector(".btn:nth-child(4)")).click();
         driver.quit();
@@ -68,7 +71,9 @@ public class Project {
 
     @Test
     public void new_project() {
+        //given
         Login();
+        //when
         driver.findElement(By.cssSelector("li:nth-child(4) .title:nth-child(2)")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
         //Name: lesl00
@@ -90,7 +95,7 @@ public class Project {
         driver.findElement(By.cssSelector(".btn-default:nth-child(1)")).click();
         wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".btn-group li:nth-child(2) > a")));
-
+        //then
         driver.findElement(By.cssSelector(".btn-group li:nth-child(2) > a")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("uniform-delete_confirm")));
 

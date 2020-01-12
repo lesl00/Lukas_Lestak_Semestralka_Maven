@@ -76,9 +76,10 @@ public class Task {
 
     @Test
     public void new_task() {
+        //given
         Login();
         new_project();
-
+        //when
         driver.findElement(By.cssSelector(".btn-primary")).click();
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fields_168")));
@@ -107,7 +108,7 @@ public class Task {
         driver.findElement(By.tagName("body")).sendKeys("BLa BLa BLa Popis");
         driver.switchTo().defaultContent();
         driver.findElement(By.className("btn-primary-modal-action")).click();
-
+        //then
         wait = new WebDriverWait(driver, 1);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr")));
         List<WebElement> Elements = driver.findElements(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr"));
@@ -153,9 +154,10 @@ public class Task {
 
     @Test
     public void sevenTasksCreated() {
+        //given
         Login();
         new_project();
-
+        //when
 
 
         for(int i = 0;i<7;i++)
@@ -175,7 +177,7 @@ public class Task {
             driver.findElement(By.className("btn-primary-modal-action")).click();
         }
 
-
+        //then
 
         WebDriverWait wait = new WebDriverWait(driver, 2);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[class='table table-striped table-bordered table-hover'] tr")));

@@ -40,30 +40,37 @@ public class UserLogin {
 
     @Test
     public void positive_login() {
+        //given
         driver.get(url);
+        //when
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
         searchInput = driver.findElement(By.name("password"));
         searchInput.sendKeys("vse456ru");
         searchInput.sendKeys(Keys.ENTER);
+        //then
         Assert.assertTrue(driver.getTitle().startsWith("Rukovoditel | Dashboard"));
         driver.quit();
     }
 
     @Test
     public void negative_login() {
+        //given
         driver.get(url);
+        //when
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("Sdsajndkandasdowkiadao");
         searchInput = driver.findElement(By.name("password"));
         searchInput.sendKeys("vse456ru");
         searchInput.sendKeys(Keys.ENTER);
+        //then
         Assert.assertTrue(!driver.getTitle().startsWith("Rukovoditel | Dashboard"));
         driver.quit();
     }
 
     @Test
     public void logout() {
+        //given
         driver.get(url);
         WebElement searchInput = driver.findElement(By.name("username"));
         searchInput.sendKeys("rukovoditel");
@@ -72,8 +79,10 @@ public class UserLogin {
         searchInput.sendKeys(Keys.ENTER);
         driver.findElement(By.cssSelector(".fa-angle-down")).click();
         driver.findElement(By.cssSelector(".fa-angle-down")).click();
+        //when
         WebDriverWait wait = new WebDriverWait(driver, 2);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Logoff")));
+        //then
         driver.findElement(By.linkText("Logoff")).click();
         driver.quit();
     }
